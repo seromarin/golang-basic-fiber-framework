@@ -6,7 +6,12 @@ import "github.com/gofiber/fiber"
 func main() {
   app := fiber.New()
 
-  app.Static("/", "/public")
+  app.Static("/public", "/public")
+
+  app.Use(func (c *fiber.Ctx){
+    fmt.Println("My first middleware")
+    c.Next()
+  })
 
   app.Get("/", func(c *fiber.Ctx) {
     c.Send("Hello world from fiber")
