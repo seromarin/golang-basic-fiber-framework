@@ -6,6 +6,8 @@ import "github.com/gofiber/fiber"
 func main() {
   app := fiber.New()
 
+  app.Static("/", "/public")
+
   app.Get("/", func(c *fiber.Ctx) {
     c.Send("Hello world from fiber")
   })
