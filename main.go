@@ -8,6 +8,12 @@ func main() {
 
   app.Static("/public", "./public")
 
+  // Set custom headers to and endpoint
+  app.Use("/", func(c *fiber.Ctx) {
+    c.Set("X-Custom-Header", "random-header")
+    c.Next()
+  })
+
   app.Use(func (c *fiber.Ctx){
     fmt.Println("My first middleware")
     c.Next()
