@@ -31,5 +31,12 @@ func main() {
     fmt.Printf("Hello %s! Id: %s\n", c.Params("name"), c.Params("id"))
   })
 
+  api := app.Group("/api")
+
+  v1 := api.Group("/v1")
+  v1.Get("/list", func(c *fiber.Ctx) {
+    c.Send("Response from /api/v1/list")
+  })
+
   app.Listen(3000)
 }
