@@ -14,5 +14,9 @@ func main() {
     fmt.Printf("Hello %s!\n", c.Params("name"))
   })
 
+  app.Get("/:name/id?", func(c *fiber.Ctx) {
+    fmt.Printf("Hello %s! Id: %s\n", c.Params("name"), c.Params("id"))
+  })
+
   app.Listen(3000)
 }
